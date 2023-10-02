@@ -1,0 +1,14 @@
+.cabecalho{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.titulo1{
+    color: #5B5B5B;
+}
+
+.titulo2{
+    color: #000;
+}

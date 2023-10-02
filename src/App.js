@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Banner from './Banner/Banner';
+import Card from './Card/Card';
+import Header from './Header/Header';
+import Modal from './Modal/Modal';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Banner />
+      <Modal />
+      <div className="cards">
+        <Card
+          tipo="Tipo do Card"
+          titulo="Título do Card"
+          descricao="Descrição do Card. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          autor="Autor do Card"
+          imagemSrc="./img/banner"
+        />
+
+        <Card
+          tipo="Tipo do Card"
+          titulo="Título do Card"
+          descricao="Descrição do Card. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          autor="Autor do Card"
+          imagemSrc="./img/banner"
+        />
+      </div>
     </div>
   );
 }
