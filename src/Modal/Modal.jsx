@@ -25,6 +25,13 @@ const Modal = () => {
         setIsOpen(false);
     };
 
+    const handleInputFocus = (field) => {
+        setFormValidation({
+            ...formValidation,
+            [field]: false,
+        });
+    };
+
     const handleSubmit = () => {
         const newFormValidation = {
             autor: !autor,
@@ -33,24 +40,22 @@ const Modal = () => {
             conteudo: !conteudo,
             imagem: !imagem,
         };
-    
+
         setFormValidation(newFormValidation);
-    
+
         if (Object.values(newFormValidation).some((invalid) => invalid)) {
             return;
         }
-    
-        console.log('Dados do formulário:', { autor, assunto, titulo, conteudo, imagem });
-    
+
         setAutor('');
         setAssunto('');
         setTitulo('');
         setConteudo('');
         setImagem(null);
-    
+
         closeModal();
     };
-    
+
     return (
         <div>
             <button className="button" onClick={openModal}>Criar post</button>
@@ -60,57 +65,55 @@ const Modal = () => {
                         <span className="close" onClick={closeModal}>&times;</span>
                         <h2>Criar post</h2>
                         <div className="form">
-                            <div className="input-container">
+                            <div className={`input-container ${formValidation.autor ? 'invalid-field' : ''}`}>
                                 <label className="label">Autor</label>
                                 <input
                                     type="text"
                                     value={autor}
                                     onChange={(e) => setAutor(e.target.value)}
-                                    className={formValidation.autor ? 'invalid-field' : ''}
+                                    onFocus={() => handleInputFocus('autor')}
                                 />
                             </div>
-                            <div className="input-container">
+                            <div className={`input-container ${formValidation.assunto ? 'invalid-field' : ''}`}>
                                 <label className="label">Assunto</label>
                                 <input
                                     type="text"
                                     value={assunto}
                                     onChange={(e) => setAssunto(e.target.value)}
-                                    className={formValidation.assunto ? 'invalid-field' : ''}
+                                    onFocus={() => handleInputFocus('assunto')}
                                 />
                             </div>
-                            <div className="input-container">
+                            <div className={`input-container ${formValidation.titulo ? 'invalid-field' : ''}`}>
                                 <label className="label">Título</label>
                                 <input
                                     type="text"
                                     value={titulo}
                                     onChange={(e) => setTitulo(e.target.value)}
-                                    className={formValidation.titulo ? 'invalid-field' : ''}
+                                    onFocus={() => handleInputFocus('titulo')}
                                 />
                             </div>
-                            <div className="input-container">
+                            <div className={`input-container ${formValidation.conteudo ? 'invalid-field' : ''}`}>
                                 <label className="label">Conteúdo</label>
                                 <textarea
                                     cols="30"
                                     rows="10"
                                     value={conteudo}
                                     onChange={(e) => setConteudo(e.target.value)}
-                                    className={formValidation.conteudo ? 'invalid-field' : ''}
+                                    onFocus={() => handleInputFocus('conteudo')}
                                 ></textarea>
                             </div>
-                            <div className="input-container">
+                            <div className={`input-container ${formValidation.imagem ? 'invalid-field' : ''}`}>
                                 <label className="label">Imagem</label>
                                 <input
                                     type="file"
                                     id="imagemInput"
                                     accept="image/*"
                                     onChange={(e) => setImagem(e.target.files[0])}
-                                    className={formValidation.imagem ? 'invalid-field' : ''}
+                                    onFocus={() => handleInputFocus('imagem')}
                                 />
                             </div>
                             <button className="button" onClick={handleSubmit}>Enviar post!</button>
                         </div>
-
-
                     </div>
                 </div>
             )}
