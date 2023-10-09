@@ -11,7 +11,7 @@ function Card({ tipo, titulo, descricao, autor, imagemSrc }) {
                 <span>{autor}</span>
             </div>
             <div className="card__right">
-                <img src={imagemSrc} alt="Imagem do card" />
+                <img src={imagemSrc} alt="Imagem do card" width={300} height={300}/>
             </div>
         </div>
     );
