@@ -1,14 +1,38 @@
-.cabecalho{
+.cabecalho {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin: 10px;
+    background-color: rgb(0, 0, 0, 0.2); 
+    padding: 10px;
+    border-radius: 8px; 
 }
-
-.titulo1{
+  
+  .titulo1 {
     color: #5B5B5B;
-}
-
-.titulo2{
+  }
+  
+  .titulo2 {
     color: #000;
-}
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  nav li {
+    margin: 0 15px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  nav a:hover {
+    color: #000;
+  }
+  
