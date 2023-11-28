@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPost } from '../services/PostService';
 import './Modal.css'
 
 const Modal = () => {
@@ -7,14 +8,14 @@ const Modal = () => {
     const [assunto, setAssunto] = useState('');
     const [titulo, setTitulo] = useState('');
     const [conteudo, setConteudo] = useState('');
-    const [imagem, setImagem] = useState(null);
+    const [img, setImagem] = useState(null);
 
     const [formValidation, setFormValidation] = useState({
         autor: false,
         assunto: false,
         titulo: false,
         conteudo: false,
-        imagem: false,
+        img: false,
     });
 
     const openModal = () => {
@@ -32,13 +33,13 @@ const Modal = () => {
         });
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const newFormValidation = {
             autor: !autor,
             assunto: !assunto,
             titulo: !titulo,
             conteudo: !conteudo,
-            imagem: !imagem,
+            img: !img,
         };
 
         setFormValidation(newFormValidation);
@@ -53,8 +54,24 @@ const Modal = () => {
         setConteudo('');
         setImagem(null);
 
+        const postData = {
+            autor,
+            assunto,
+            titulo,
+            conteudo,
+            img
+        };
+
+        try {
+            await createPost(postData);
+            console.log('Post enviado com sucesso!');
+        } catch (error) {
+            console.error('Erro ao enviar post:', error);
+        }
+
         closeModal();
     };
+
 
     return (
         <div>
@@ -105,13 +122,15 @@ const Modal = () => {
                             <div className={`input-container ${formValidation.imagem ? 'invalid-field' : ''}`}>
                                 <label className="label">Imagem</label>
                                 <input
-                                    type="file"
+                                    type="text"
                                     id="imagemInput"
-                                    accept="image/*"
-                                    onChange={(e) => setImagem(e.target.files[0])}
-                                    onFocus={() => handleInputFocus('imagem')}
+                                    placeholder="URL da Imagem"
+                                    value={img}
+                                    onChange={(e) => setImagem(e.target.value)}
+                                    onFocus={() => handleInputFocus('img')}
                                 />
                             </div>
+
                             <button className="button" onClick={handleSubmit}>Enviar post!</button>
                         </div>
                     </div>

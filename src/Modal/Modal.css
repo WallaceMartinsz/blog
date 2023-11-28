@@ -62,14 +62,6 @@
     margin-bottom: 5px;
   }
 
-  #imagemInput {
-    width: 100%;
-    padding: 10px;
-    border: 2px dashed #5B5B5B; 
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
   #imagemInput:hover {
     background-color: #f0f0f0; 
   }
