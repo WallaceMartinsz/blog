@@ -1,38 +1,73 @@
-.card{
+.posts-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+    justify-content: center;
+}
+
+.card {
     height: auto;
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 30px 0px;
+    margin: 30px auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
 }
 
-.card__left{
+.card:hover {
+    background-color: #f9f9f9;
+}
+
+.card__left {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    
+    padding: 20px;
 }
 
 .card__left span {
-    color: #5B5B5B;
-    margin: 10px 0;
+    color: #5b5b5b;
+    margin-bottom: 10px;
 }
 
-.card__left h1{
+.card__left h1 {
     font-size: 24px;
     text-align: start;
+    margin-bottom: 10px;
 }
 
-.card__left p{
-    color: #5B5B5B;
+.card__left p {
+    color: #5b5b5b;
     text-align: justify;
+    margin-bottom: 10px;
 }
 
-.card__right img {
-    margin-left: 20px;
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
+.card__right {
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    font-size: 22px;
+    top: -45px;
+    left: 350px;
+    display: flex;
+    gap: 10px;
+}
+
+.delete-icon,
+.edit-icon {
+    cursor: pointer;
+    color: #777;
+    transition: color 0.3s ease;
+}
+
+.delete-icon:hover,
+.edit-icon:hover {
+    color: #e74c3c;
 }
