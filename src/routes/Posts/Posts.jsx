@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { getPosts, deletePost, updatePost } from '../../services/PostService';
 import Card from '../../Card/Card';
 import './Posts.css';
-import Modal from '../../Modal/Modal';
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -41,18 +40,18 @@ function Posts() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <Modal />
       <div className="posts-container">
         {filteredPosts.map((post) => (
           <Card
             key={post._id}
+            postId={post._id}
             tipo={post.assunto}
             titulo={post.titulo}
             descricao={post.conteudo}
             autor={post.autor}
-            imagemSrc={post.img}
+            img={post.img}
             onDelete={() => handleDelete(post._id)}
-            onUpdate={() => handleUpdate(post._id, )}
+            onUpdate={() => handleUpdate(post._id)}
           />
         ))}
       </div>
